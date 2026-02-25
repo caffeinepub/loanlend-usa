@@ -1,0 +1,60 @@
+{
+  "kind": "build_request",
+  "title": "Fix deployment build/compile errors",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "text": "Diagnose and fix all Motoko backend compilation errors in backend/main.mo and backend/migration.mo that are preventing successful deployment. Ensure the code compiles cleanly with no type errors, missing imports, or invalid syntax. Pay particular attention to the optional productId field in LoanApplication, the admin principal check, and any mismatched type signatures between functions and their call sites.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "can slove it",
+          "Deployment error"
+        ]
+      },
+      "acceptanceCriteria": [
+        "backend/main.mo compiles without errors",
+        "backend/migration.mo compiles without errors",
+        "All type signatures are consistent (e.g., optional productId is handled everywhere it is referenced)",
+        "The canister deploys successfully to the network"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Diagnose and fix all frontend TypeScript compilation errors that are preventing the build from completing. Ensure all components, hooks, and pages type-check correctly, with particular attention to references to productId (which was removed), imports that may be missing or mismatched, and any React Query hook return types that are used incorrectly.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "can slove it",
+          "Deployment error"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All TypeScript files compile without errors or warnings that block the build",
+        "No references to removed fields (e.g., productId) remain in components or type definitions",
+        "The frontend build artifact is produced successfully",
+        "The deployed app loads in the browser without runtime errors in the console"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the overall data model or feature set — only fix compilation and deployment errors",
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "Adding new features or pages",
+    "Changing the visual theme or layout",
+    "Modifying the admin principal value unless it is causing a type error"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

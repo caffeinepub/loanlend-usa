@@ -1,0 +1,59 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix Frontend TypeScript Compilation Errors",
+  "requirements": [
+    {
+      "id": "REQ-20",
+      "summary": "Fix all frontend TypeScript compilation errors preventing the build from completing, with particular attention to productId references, missing imports, and React Query hook return types",
+      "acceptanceCriteria": [
+        "All TypeScript files compile without errors or warnings that block the build",
+        "No references to removed fields (e.g., productId) remain in components or type definitions",
+        "The frontend build artifact is produced successfully",
+        "The deployed app loads in the browser without runtime errors in the console"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AdminApplicationTable.tsx",
+          "operation": "modify",
+          "description": "Remove all references to productId and productMap since the LoanApplication.productId field is now optional in the backend interface. Update the table columns to remove the Product Name column that depends on productId, or make it handle the optional nature of productId gracefully (e.g., display 'N/A' when productId is undefined). Ensure all TypeScript types align with the backend interface definition where productId is optional."
+        },
+        {
+          "path": "frontend/src/components/ApplicationDetailModal.tsx",
+          "operation": "modify",
+          "description": "Update the component to handle the optional productId field in LoanApplication. If productId is displayed or used to fetch product details, add conditional logic to handle cases where productId is undefined. Ensure no TypeScript errors occur when accessing application.productId."
+        },
+        {
+          "path": "frontend/src/components/AdminApplicationDetailModal.tsx",
+          "operation": "modify",
+          "description": "Update the component to handle the optional productId field. Review any logic that references productId and add appropriate null/undefined checks. Ensure the updateApplicationStatus mutation call passes the correct types including handling optional adminNotes (pass null instead of undefined if needed)."
+        },
+        {
+          "path": "frontend/src/pages/ApplicationFormPage.tsx",
+          "operation": "modify",
+          "description": "Review the submitApplication mutation payload to ensure productId is either omitted or set to undefined when not provided. Verify that the LoanApplication object constructed for submission matches the backend interface type signature. Fix any type mismatches in the application submission flow."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Review all React Query hooks to ensure return types match the backend interface. Verify that hooks using LoanApplication handle the optional productId field correctly. Check that mutation hooks (submitApplication, updateApplicationStatus) pass parameters with the correct types, especially for optional fields like productId and adminNotes."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Review any references to loan products or applications to ensure compatibility with the updated LoanApplication type. If this page uses productId in any way, add appropriate optional chaining or null checks."
+        },
+        {
+          "path": "frontend/src/pages/LoanProductsPage.tsx",
+          "operation": "modify",
+          "description": "Verify that the loan products fetched and displayed do not assume a required productId on applications. Ensure the page compiles without errors and that product data rendering aligns with the LoanProduct type from the backend interface."
+        },
+        {
+          "path": "frontend/src/pages/BorrowerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Update the dashboard to handle optional productId in displayed loan applications. If applications are rendered with product information, add conditional logic to handle missing productId gracefully (e.g., show 'General Loan' or 'N/A')."
+        }
+      ]
+    }
+  ]
+}

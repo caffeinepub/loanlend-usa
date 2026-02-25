@@ -1,0 +1,13 @@
+{
+  "frontend/src/pages/BorrowerDashboardPage.tsx": "Borrower dashboard showing application stats and list with detail modal; passes null for product to ApplicationDetailModal, no productId/productMap references.",
+  "frontend/src/pages/AdminPanelPage.tsx": "Admin panel page showing all applications in a sortable/filterable table; passes null for product to AdminApplicationDetailModal, no productMap or useGetLoanProducts usage.",
+  "frontend/src/pages/ApplicationFormPage.tsx": "Multi-step loan application form (4 steps) using the types and prop signatures (`data`/`onChange`/`errors`) exported by the step components; productId is omitted from the submitted LoanApplication since it is optional.",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks for backend interactions; useUpdateApplicationStatus passes adminNotes as string|null matching the backend interface signature exactly.",
+  "frontend/src/components/ApplicationForm/Step3LoanDetails.tsx": "Step 3 of the loan application form with only requested amount, term months, and purpose fields — no loan product selection or product-related logic.",
+  "frontend/src/components/ApplicationForm/Step4Review.tsx": "Step 4 review summary displaying personal info, financial info, and loan details (amount, term, purpose) — no product field or product-related props.",
+  "frontend/src/components/AdminApplicationTable.tsx": "Admin table component with search/filter/sort for loan applications; removed products prop entirely, no productId/productMap references.",
+  "frontend/src/pages/LoanProductsPage.tsx": "Loan products listing page showing all available loan products in a card grid with details (rate, amount range, term); uses navigate() instead of Link with search params to avoid TanStack Router type errors.",
+  "frontend/src/components/AdminApplicationDetailModal.tsx": "Admin modal for reviewing and updating loan application status with optional adminNotes (passed as null when empty) and optional productId/product display with null-safe rendering.",
+  "frontend/src/components/ApplicationDetailModal.tsx": "Read-only modal for borrowers to view their loan application details; handles optional productId and reviewedAt fields with null checks.",
+  "frontend/src/components/Navigation.tsx": "Sticky top navigation bar with logo, nav links, auth dropdown, and mobile menu; updated to import `useIsCallerAdmin` (renamed hook) instead of the removed `useIsAdmin`."
+}

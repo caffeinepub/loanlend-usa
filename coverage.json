@@ -1,0 +1,65 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T16:46:17.923Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-19",
+        "summary": "Diagnose and fix all Motoko backend compilation errors in backend/main.mo and backend/migration.mo that are preventing successful deployment. Ensure the code compiles cleanly with no type errors, missing imports, or invalid syntax. Pay particular attention to the optional productId field in LoanApplication, the admin principal check, and any mismatched type signatures between functions and their call sites.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Diagnose and fix all frontend TypeScript compilation errors that are preventing the build from completing. Ensure all components, hooks, and pages type-check correctly, with particular attention to references to productId (which was removed), imports that may be missing or mismatched, and any React Query hook return types that are used incorrectly.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/AdminApplicationTable.tsx",
+          "frontend/src/components/ApplicationDetailModal.tsx",
+          "frontend/src/components/AdminApplicationDetailModal.tsx",
+          "frontend/src/pages/ApplicationFormPage.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/LoanProductsPage.tsx",
+          "frontend/src/pages/BorrowerDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/AdminApplicationTable.tsx",
+          "frontend/src/components/ApplicationDetailModal.tsx",
+          "frontend/src/components/AdminApplicationDetailModal.tsx",
+          "frontend/src/pages/ApplicationFormPage.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/LoanProductsPage.tsx",
+          "frontend/src/pages/BorrowerDashboardPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/AdminApplicationDetailModal.tsx",
+    "frontend/src/components/AdminApplicationTable.tsx",
+    "frontend/src/components/ApplicationDetailModal.tsx",
+    "frontend/src/components/Navigation.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/AdminPanelPage.tsx",
+    "frontend/src/pages/ApplicationFormPage.tsx",
+    "frontend/src/pages/BorrowerDashboardPage.tsx",
+    "frontend/src/pages/LoanProductsPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

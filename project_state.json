@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 13,
+  "summary": "Loan lending website for the USA market. Users can apply for loans, view loan options, and manage their lending experience.",
+  "architectural_notes": [
+    "USA-focused lending platform — must comply with relevant US lending regulations and disclosures (e.g., APR disclosure, TILA)",
+    "Secure handling of PII and financial data (encryption at rest and in transit)"
+  ],
+  "known_issues": [
+    "Admin panel or loan application viewing is reported as not working by the user",
+    "Deployment to network failed — build/compile error needs investigation and fix"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-build-a-public-facing-homepage-with-a-hero-section-highlighting-the-platform-s-value-proposition-for-us-borrowers-a-how-it-works-section-3-steps-apply-get-approved-receive-funds-trust-indicators-security-badges-fdic-note-etc-and-a-prominent-cta-button-to-start-a-loan-application",
+      "title": "Build a public-facing homepage with a hero section highlighting the platform's value proposition for US borrowers, a 'How It Works' section (3 steps: Apply, Get Approved, Receive Funds), trust indicators (security badges, FDIC note, etc.), and a prominent CTA button to start a loan application.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-loan-products-listing-page-that-fetches-and-displays-all-available-loan-products-from-the-backend-each-product-card-should-show-the-loan-name-interest-rate-min-max-amount-loan-term-range-and-a-apply-now-button-that-navigates-to-the-application-form-pre-selected-with-that-product",
+      "title": "Build a Loan Products listing page that fetches and displays all available loan products from the backend. Each product card should show the loan name, interest rate, min/max amount, loan term range, and a 'Apply Now' button that navigates to the application form pre-selected with that product.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-multi-step-loan-application-form-for-borrowers-step-1-personal-info-full-name-email-date-of-birth-ssn-last-4-digits-address-step-2-financial-info-annual-income-employment-status-credit-score-range-step-3-loan-details-select-loan-product-requested-amount-term-purpose-step-4-review-submit-summary-on-submit-call-the-backend-submitapplication-function-and-show-a-confirmation-with-application-id",
+      "title": "Build a multi-step loan application form for borrowers. Step 1: Personal info (full name, email, date of birth, SSN last 4 digits, address). Step 2: Financial info (annual income, employment status, credit score range). Step 3: Loan details (select loan product, requested amount, term, purpose). Step 4: Review & submit summary. On submit, call the backend submitApplication() function and show a confirmation with application ID.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-borrower-account-registration-and-login-using-internet-identity-after-authentication-register-or-retrieve-the-borrower-profile-linked-to-the-caller-s-principal-store-profile-info-name-email-if-new-show-a-logged-in-state-in-the-navigation-bar-with-the-borrower-s-name-and-a-logout-option",
+      "title": "Implement borrower account registration and login using Internet Identity. After authentication, register or retrieve the borrower profile linked to the caller's principal. Store profile info (name, email) if new. Show a logged-in state in the navigation bar with the borrower's name and a logout option.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-borrower-dashboard-protected-route-requires-login-that-shows-a-summary-of-all-submitted-loan-applications-with-their-current-status-color-coded-pending-yellow-under-review-blue-approved-green-rejected-red-disbursed-purple-details-of-each-application-and-a-new-application-button",
+      "title": "Build a borrower dashboard (protected route, requires login) that shows: a summary of all submitted loan applications with their current status (color-coded: pending=yellow, under_review=blue, approved=green, rejected=red, disbursed=purple), details of each application, and a 'New Application' button.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-admin-panel-accessible-via-a-separate-admin-route-protected-by-a-hard-coded-admin-principal-stored-in-the-backend-the-admin-panel-lists-all-loan-applications-with-borrower-name-product-amount-and-status-admin-can-click-any-application-to-view-full-details-update-its-status-and-add-review-notes-status-changes-must-call-the-backend-updateapplicationstatus-function",
+      "title": "Build an admin panel (accessible via a separate /admin route, protected by a hard-coded admin principal stored in the backend). The admin panel lists all loan applications with borrower name, product, amount, and status. Admin can click any application to view full details, update its status, and add review notes. Status changes must call the backend updateApplicationStatus() function.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-professional-visual-theme-suited-for-a-us-financial-services-brand-use-a-palette-of-deep-navy-0a1f44-as-the-primary-color-and-gold-amber-f5a623-as-the-accent-with-white-backgrounds-crisp-typography-sans-serif-generous-whitespace-and-subtle-card-shadows-apply-this-theme-consistently-across-all-pages-including-navigation-forms-dashboard-and-the-admin-panel",
+      "title": "Apply a clean, professional visual theme suited for a US financial services brand. Use a palette of deep navy (#0A1F44) as the primary color and gold/amber (#F5A623) as the accent, with white backgrounds, crisp typography (sans-serif), generous whitespace, and subtle card shadows. Apply this theme consistently across all pages including navigation, forms, dashboard, and the admin panel.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-diagnose-and-fix-the-admin-panel-at-admin-ensure-the-admin-principal-check-in-the-backend-correctly-validates-the-caller-s-principal-against-the-hard-coded-admin-principal-ensure-getallapplications-is-only-callable-by-the-admin-and-returns-data-correctly-and-ensure-the-adminpanelpage-properly-handles-authentication-state-loading-and-error-cases-with-clear-user-feedback",
+      "title": "Diagnose and fix the admin panel at /admin: ensure the admin principal check in the backend correctly validates the caller's principal against the hard-coded admin principal, ensure getAllApplications() is only callable by the admin and returns data correctly, and ensure the AdminPanelPage properly handles authentication state, loading, and error cases with clear user feedback.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-borrower-dashboard-at-dashboard-ensure-getborrowerbyprincipal-and-getapplicationsbyborrower-are-called-correctly-after-login-and-that-the-dashboard-displays-submitted-loan-applications-with-status-badges-handle-the-case-where-no-borrower-profile-exists-yet-with-a-clear-prompt-to-complete-profile-setup",
+      "title": "Fix the borrower dashboard at /dashboard: ensure getBorrowerByPrincipal() and getApplicationsByBorrower() are called correctly after login, and that the dashboard displays submitted loan applications with status badges. Handle the case where no borrower profile exists yet with a clear prompt to complete profile setup.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-loan-application-submission-flow-ensure-submitapplication-on-the-backend-correctly-stores-the-application-linked-to-the-borrower-s-principal-and-that-the-applicationformpage-correctly-calls-the-mutation-and-displays-the-confirmation-with-the-returned-application-id",
+      "title": "Fix the loan application submission flow: ensure submitApplication() on the backend correctly stores the application linked to the borrower's principal, and that the ApplicationFormPage correctly calls the mutation and displays the confirmation with the returned application ID.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-loan-product-dropdown-in-step-3-loan-details-of-the-application-form-so-that-it-correctly-fetches-and-displays-all-available-loan-products-ensure-the-getloanproducts-backend-query-is-called-and-its-results-are-properly-passed-to-the-step3loandetails-component-the-dropdown-must-populate-with-product-names-and-allow-the-user-to-select-a-product-before-proceeding",
+      "title": "Fix the loan product dropdown in Step 3 (Loan Details) of the application form so that it correctly fetches and displays all available loan products. Ensure the `getLoanProducts()` backend query is called and its results are properly passed to the Step3LoanDetails component. The dropdown must populate with product names and allow the user to select a product before proceeding.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-loan-product-selection-field-from-step-3-loan-details-of-the-multi-step-application-form-update-the-step3loandetails-component-to-eliminate-the-product-dropdown-remove-any-related-loan-product-fetching-logic-getloanproducts-query-from-that-component-and-remove-the-productid-field-from-the-form-data-collected-in-that-step-update-the-step-4-review-summary-and-the-final-submitapplication-call-to-no-longer-include-or-reference-a-selected-loan-product",
+      "title": "Remove the loan product selection field from Step 3 (Loan Details) of the multi-step application form. Update the Step3LoanDetails component to eliminate the product dropdown, remove any related loan product fetching logic (getLoanProducts query) from that component, and remove the productId field from the form data collected in that step. Update the Step 4 review summary and the final submitApplication() call to no longer include or reference a selected loan product.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-visible-admin-login-button-or-link-on-the-admin-page-and-in-the-navigation-that-guides-the-admin-user-to-authenticate-via-internet-identity-after-authentication-the-page-must-compare-the-caller-s-principal-against-the-hard-coded-admin-principal-stored-in-the-backend-and-grant-access-to-the-admin-panel-if-they-match-if-the-authenticated-principal-is-not-the-admin-display-a-clear-access-denied-message-if-the-user-is-not-authenticated-display-a-prompt-to-log-in-with-a-login-button",
+      "title": "Add a visible 'Admin Login' button or link on the /admin page and in the navigation that guides the admin user to authenticate via Internet Identity. After authentication, the page must compare the caller's principal against the hard-coded admin principal stored in the backend and grant access to the admin panel if they match. If the authenticated principal is not the admin, display a clear 'Access Denied' message. If the user is not authenticated, display a prompt to log in with a Login button.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-diagnose-and-fix-all-frontend-typescript-compilation-errors-that-are-preventing-the-build-from-completing-ensure-all-components-hooks-and-pages-type-check-correctly-with-particular-attention-to-references-to-productid-which-was-removed-imports-that-may-be-missing-or-mismatched-and-any-react-query-hook-return-types-that-are-used-incorrectly",
+      "title": "Diagnose and fix all frontend TypeScript compilation errors that are preventing the build from completing. Ensure all components, hooks, and pages type-check correctly, with particular attention to references to productId (which was removed), imports that may be missing or mismatched, and any React Query hook return types that are used incorrectly.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Loan application form with personal and financial details",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Loan products/options listing page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "User registration and login (borrower accounts)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Loan status tracking dashboard for borrowers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Admin panel to review and manage loan applications",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create a Motoko backend actor with data models and CRUD operations for: loan products (id, name, minAmount, maxAmount, interestRate, termMonths, description), borrower profiles (id, principal, fullName, email, ssn, annualIncome, creditScore, createdAt), and loan applications (id, borrowerId, productId, requestedAmount, termMonths, purpose, status, submittedAt, reviewedAt, adminNotes). Status should be a variant: #pending, #under_review, #approved, #rejected, #disbursed.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Expose backend query and update functions: getLoanProducts(), getApplicationsByBorrower(borrowerId), submitApplication(application), updateApplicationStatus(appId, status, adminNotes), registerBorrower(profile), getBorrowerByPrincipal(principal), getAllApplications() for admin use.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Expose the hard-coded admin principal value in the backend (or make it configurable via an initialization call) and ensure it matches a real, usable Internet Identity principal. Add a clear comment in the backend indicating what value is set as the admin principal so it can be verified and updated if needed.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update the backend submitApplication() function and the LoanApplication data model to make the productId field optional (or remove it entirely) so that applications submitted without a product selection are accepted and stored correctly.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Expose a backend query function `getAdminPrincipal() : async Text` (or `isAdmin() : async Bool`) that returns whether the caller is the admin principal. Ensure the hard-coded admin principal in the backend is set to a valid, real Internet Identity principal and is clearly commented in the source code so it can be verified and updated. The `getAllApplications()` function must reject non-admin callers with a clear error.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Diagnose and fix all Motoko backend compilation errors in backend/main.mo and backend/migration.mo that are preventing successful deployment. Ensure the code compiles cleanly with no type errors, missing imports, or invalid syntax. Pay particular attention to the optional productId field in LoanApplication, the admin principal check, and any mismatched type signatures between functions and their call sites.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "LoanLend USA",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
